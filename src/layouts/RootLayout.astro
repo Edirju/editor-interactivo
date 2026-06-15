@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+import 'remixicon/fonts/remixicon.css';
+---
+
+<!doctype html>
+<html lang="es" data-locale="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="selection:bg-blue-500/80 selection:text-black/85">
+    <slot />
+  </body>
+</html>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  })();
+
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+
+  const locale = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('locale')) {
+      return localStorage.getItem('locale');
+    }
+    return navigator.language?.startsWith('en') ? 'en' : 'es';
+  })();
+
+  document.documentElement.lang = locale;
+</script>

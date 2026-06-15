@@ -1,0 +1,68 @@
+{
+  "app": {
+    "name": "Nebula Editor"
+  },
+  "common": {
+    "new": "New",
+    "save": "Save",
+    "open": "Open",
+    "copy": "Copy",
+    "cut": "Cut",
+    "paste": "Paste",
+    "menu": "Menu",
+    "close": "Close",
+    "cancel": "Cancel"
+  },
+  "toolbar": {
+    "file": "File",
+    "format": "Format",
+    "paragraph": "Paragraph",
+    "insert": "Insert",
+    "bold": "Bold",
+    "italic": "Italic",
+    "strikethrough": "Strikethrough",
+    "highlight": "Highlight",
+    "code": "Code",
+    "math": "Math",
+    "comment": "Comment",
+    "clearFormat": "Clear Format",
+    "bulletList": "Bullet List",
+    "orderedList": "Numbered List",
+    "taskList": "Task List",
+    "heading": "Heading {{level}}",
+    "body": "Body",
+    "quote": "Quote",
+    "footnote": "Footnote",
+    "featured": "Featured",
+    "horizontalRule": "Horizontal Rule",
+    "table": "Table",
+    "codeBlock": "Code Block",
+    "mathBlock": "Math Block"
+  },
+  "drawer": {
+    "title": "Nebula Tools",
+    "footer": "Markdown Engine v1.0.0"
+  },
+  "codeBlockModal": {
+    "title": "Insert Code Block",
+    "description": "Select the language for the code block",
+    "language": "Language",
+    "selectLanguage": "Select a language...",
+    "other": "Other...",
+    "otherPlaceholder": "Language name...",
+    "insert": "Insert"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "footnoteModal": {
+    "title": "Footnote",
+    "description": "Write the explanatory text that will appear at the end of the document",
+    "placeholder": "Footnote text...",
+    "insert": "Insert"
+  },
+  "editor": {
+    "initialContent": "# Welcome to Nebula\nStart typing..."
+  }
+}

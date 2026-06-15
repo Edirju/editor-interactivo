@@ -1,0 +1,68 @@
+{
+  "app": {
+    "name": "Nebula Editor"
+  },
+  "common": {
+    "new": "Nuevo",
+    "save": "Guardar",
+    "open": "Abrir",
+    "copy": "Copiar",
+    "cut": "Cortar",
+    "paste": "Pegar",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "cancel": "Cancelar"
+  },
+  "toolbar": {
+    "file": "Archivo",
+    "format": "Formato",
+    "paragraph": "Párrafo",
+    "insert": "Insertar",
+    "bold": "Negrita",
+    "italic": "Cursiva",
+    "strikethrough": "Tachado",
+    "highlight": "Resaltado",
+    "code": "Código",
+    "math": "Fórmula",
+    "comment": "Comentario",
+    "clearFormat": "Limpiar Formato",
+    "bulletList": "Lista con viñetas",
+    "orderedList": "Lista numerada",
+    "taskList": "Lista tareas",
+    "heading": "Título {{level}}",
+    "body": "Cuerpo",
+    "quote": "Cita",
+    "footnote": "Nota al pie",
+    "featured": "Destacado",
+    "horizontalRule": "Regla Horizontal",
+    "table": "Tabla",
+    "codeBlock": "Bloque de Código",
+    "mathBlock": "Bloque Matemático"
+  },
+  "drawer": {
+    "title": "Nebula Tools",
+    "footer": "Markdown Engine v1.0.0"
+  },
+  "codeBlockModal": {
+    "title": "Insertar Bloque de Código",
+    "description": "Selecciona el lenguaje del bloque de código",
+    "language": "Lenguaje",
+    "selectLanguage": "Selecciona un lenguaje...",
+    "other": "Otro...",
+    "otherPlaceholder": "Nombre del lenguaje...",
+    "insert": "Insertar"
+  },
+  "theme": {
+    "light": "Modo claro",
+    "dark": "Modo oscuro"
+  },
+  "footnoteModal": {
+    "title": "Nota al pie",
+    "description": "Escribe el texto explicativo que aparecerá al final del documento",
+    "placeholder": "Texto de la nota al pie...",
+    "insert": "Insertar"
+  },
+  "editor": {
+    "initialContent": "# Bienvenido a Nébula\nEmpieza a escribir..."
+  }
+}

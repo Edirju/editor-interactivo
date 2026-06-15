@@ -1,0 +1,153 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/inconsolata/wght.css';
+@import 'katex/dist/katex.min.css';
+
+:root {
+  --font-sans: 'Inter Variable', sans-serif;
+  --font-mono: 'Inconsolata Variable', monospace;
+  /* Colors | Base */
+  --dark: 30, 37, 44; /* #1e252c */
+  --light: 255, 254, 254; /* #fffefe */
+  --accent: 205, 82, 65; /* #cd5241 */
+  --accent-dark: 98, 35, 26; /* #62231a */
+  --accent-50: 0, 102, 94; /* #00665e */
+  --accent-dark-50: 0, 60, 55; /* #003c37 */
+  --color-text: hsl(210, 19%, 15%);
+  --color: 30, 37, 44;
+
+  /* Footnote colors */
+  --fn-color: #3b82f6;
+  --fn-def-bg: rgba(59, 130, 246, 0.05);
+  --fn-def-border: rgba(59, 130, 246, 0.3);
+
+  /* Background | Theme */
+  --hdr-gradient: linear-gradient(
+    to top in oklch,
+    oklch(0.9378 0.0011 17.18) 0%,
+    oklch(0.9978 0.001061 17.1758) 100%
+  );
+  --sdr-gradient: linear-gradient(to top left, #ebeaea 0%, #fffefe 100%);
+  background: var(--hdr-gradient);
+}
+
+:root.dark {
+  /* Colors | Base */
+  --color-text: #fffefe;
+  --color: 255, 254, 254;
+  /* Background | Theme */
+  --hdr-gradient: linear-gradient(
+    to bottom right in oklch,
+    oklch(0.2172 0.0302 261.27) 0%,
+    60%,
+    oklch(0.1913 0 0) 100%
+  );
+  --sdr-gradient: linear-gradient(
+    to bottom right,
+    #121a28 0%,
+    60%,
+    #141414 100%
+  );
+  background: var(--hdr-gradient);
+}
+
+@theme {
+  --font-sans: 'Inter Variable', sans-serif;
+  --font-mono: 'Inconsolata Variable', monospace;
+}
+
+
+body {
+  position: relative;
+  background: var(--hdr-gradient);
+  color: rgb(var(--color));
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  transition: background 0.3s ease;
+}
+
+/* Scrollbar minimalista para el editor */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0e14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+/* Reset de foco para CodeMirror */
+.cm-editor {
+  outline: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Footnote: referencia como superíndice (exponente) */
+.cm-md-footnote-ref {
+  color: var(--fn-color);
+  font-size: 0.75em;
+  font-weight: 400;
+  vertical-align: super;
+  line-height: 0;
+  margin: 0 1px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: color 0.15s ease;
+}
+
+.cm-md-footnote-ref:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Bloque de definición — clickeable */
+.cm-md-footnote-def-line {
+  position: relative;
+  background-color: var(--fn-def-bg);
+  border-left: 2px solid var(--fn-def-border);
+  margin: 4px 0;
+  padding-left: 20px;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.cm-md-footnote-def-line::after {
+  content: ' \21A9';
+  opacity: 0.35;
+  margin-left: 8px;
+  font-size: 0.85em;
+  transition: opacity 0.15s ease;
+}
+
+.cm-md-footnote-def-line:hover::after {
+  opacity: 0.75;
+}
+
+.cm-md-footnote-def-line:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-left-color: var(--fn-color);
+}
+
+.cm-md-hidden-mark {
+  display: none;
+}
+
+
