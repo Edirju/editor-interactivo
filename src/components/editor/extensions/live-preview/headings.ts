@@ -2,10 +2,6 @@ import { Decoration } from '@codemirror/view';
 import type { EditorState } from '@codemirror/state';
 import { hideMarkDecoration, type DecorationItem } from './utils';
 
-// CSS clases usadas (definidas en theme.ts):
-// - .cm-md-h1, .cm-md-h2, .cm-md-h3, .cm-md-h4, .cm-md-h5, .cm-md-h6
-// - .cm-md-hidden-mark
-
 const HEADING_STYLE: Record<string, string> = {
   ATXHeading1: 'cm-md-h1',
   ATXHeading2: 'cm-md-h2',

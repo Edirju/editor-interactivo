@@ -8,12 +8,6 @@ import {
 } from './utils';
 import { CheckboxWidget } from '../../../ui/TaskWidget';
 
-// CSS clases usadas (definidas en theme.ts):
-// - .cm-md-indent-[1-8]
-// - .cm-md-task-checked, .cm-md-checkbox
-// - .cm-md-bullet-hidden
-// - .cm-md-list-number, .cm-md-list-number-[1-8]
-
 function computeListNumber(listMarkNode: SyntaxNode): string {
   const indices: number[] = [];
   let current: SyntaxNode | null = listMarkNode.parent;

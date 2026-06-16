@@ -3,9 +3,6 @@ import type { EditorState } from '@codemirror/state';
 import { type DecorationItem } from './utils';
 import { HRWidget } from '../../../ui/HRWidget';
 
-// CSS clase usada (definida en theme.ts):
-// - .cm-md-hr (widget)
-
 export function processHorizontalRule(
   node: { name: string; from: number; to: number },
   state: EditorState,
