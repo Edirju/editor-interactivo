@@ -14,7 +14,7 @@ export const Statusbar = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="statusbar shrink-0 h-7 flex items-center justify-between px-4 text-[0.7rem] leading-none select-none bg-[rgb(var(--statusbar-bg))] text-[rgb(var(--color),0.55)] border-t border-[rgb(var(--color),0.08)] font-mono font-light ">
+    <footer className="statusbar shrink-0 h-7 flex items-center justify-between px-4 text-[0.7rem] leading-none select-none bg-[rgb(var(--statusbar-bg),0.45)] text-[rgb(var(--color),0.55)] border-t border-[rgb(var(--color),0.08)] font-mono font-light ">
       <div className="flex items-center gap-1.5 min-w-0">
         <i className="ri-file-text-line text-[0.8rem]" />
         <span className="truncate">{name}</span>
