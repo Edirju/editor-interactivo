@@ -43,6 +43,27 @@
     "title": "Nebula Tools",
     "footer": "Markdown Engine v1.0.0"
   },
+  "toolbarTable": {
+    "addRowAbove": "Añadir Fila Arriba",
+    "addRowBelow": "Añadir Fila Abajo",
+    "deleteRow": "Borrar Fila",
+    "addColumnLeft": "Añadir a la izquierda",
+    "addColumnRight": "Añadir a la derecha",
+    "deleteColumn": "Borrar Columna",
+    "alignLeft": "Alinear Izquierda",
+    "alignCenter": "Alinear Centro",
+    "alignRight": "Alinear Derecha",
+    "deleteTable": "Borrar Tabla"
+  },
+  "tableModal": {
+    "title": "Insertar Tabla",
+    "description": "Configura el tamaño de la tabla",
+    "rows": "Filas",
+    "columns": "Columnas",
+    "includeHeader": "Incluir fila de cabecera",
+    "preview": "Vista previa",
+    "insert": "Insertar"
+  },
   "codeBlockModal": {
     "title": "Insertar Bloque de Código",
     "description": "Selecciona el lenguaje del bloque de código",
@@ -64,5 +85,10 @@
   },
   "editor": {
     "initialContent": "# Bienvenido a Nébula\nEmpieza a escribir..."
+  },
+  "statusbar": {
+    "line": "Ln",
+    "column": "Col",
+    "words": "palabras"
   }
 }

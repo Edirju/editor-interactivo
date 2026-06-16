@@ -20,7 +20,8 @@ import { languages } from '@codemirror/language-data';
 import { GFM, Subscript, Superscript } from '@lezer/markdown';
 import { useStore } from '@nanostores/react';
 import { $theme } from '../../../store/themeStore';
-import { $editorView, $markdownContent } from '../../../store/editorStore';
+import { $editorView, $markdownContent, $isInTable, $cursorLine, $cursorCol, $contextMenuVisible, $contextMenuX, $contextMenuY } from '../../../store/editorStore';
+import { isCursorInTable } from '../utils/table-utils';
 import {
   HighlightExtension,
   MathExtension,
@@ -89,6 +90,13 @@ export function useCodeMirror(
           if (update.docChanged) {
             $markdownContent.set(update.state.doc.toString());
           }
+          if (update.docChanged || update.selectionSet) {
+            $isInTable.set(isCursorInTable(update.view));
+            const pos = update.state.selection.main.head;
+            const line = update.state.doc.lineAt(pos);
+            $cursorLine.set(line.number);
+            $cursorCol.set(pos - line.from + 1);
+          }
         }),
         EditorView.domEventHandlers({
           click(event, view) {
@@ -113,6 +121,13 @@ export function useCodeMirror(
             }
             return false;
           },
+          contextmenu(event) {
+            event.preventDefault();
+            $contextMenuX.set(event.clientX);
+            $contextMenuY.set(event.clientY);
+            $contextMenuVisible.set(true);
+            return true;
+          },
         }),
       ],
     });
@@ -123,6 +138,7 @@ export function useCodeMirror(
     });
 
     $editorView.set(view);
+    $isInTable.set(isCursorInTable(view));
     editorViewRef.current = view;
 
     setTimeout(() => view.focus(), 100);

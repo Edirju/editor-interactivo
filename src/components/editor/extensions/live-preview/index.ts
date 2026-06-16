@@ -16,6 +16,7 @@ import { processCallouts, resetCalloutLines } from './callouts';
 import { processMath } from './math';
 import { processFootnotes } from './footnotes';
 import { processHorizontalRule } from './horizontal-rule';
+import { processTables } from './tables';
 import type { DecorationItem } from './utils';
 
 export const livePreviewEngine = StateField.define<DecorationSet>({
@@ -48,6 +49,7 @@ export const livePreviewEngine = StateField.define<DecorationSet>({
     });
 
     processFootnotes(state, decoList, cursorLineNum);
+    processTables(state, decoList);
 
     decoList.sort((a, b) => a.from - b.from || (a.isLine ? -1 : 1));
 

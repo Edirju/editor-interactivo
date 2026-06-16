@@ -17,7 +17,7 @@ export const getEditorTheme = (theme: 'light' | 'dark') => {
       '.cm-content': {
         caretColor: isDark ? '#fffefe' : '#1e252c',
         fontFamily: '"Inter", sans-serif',
-        lineHeight: '1.8',
+        lineHeight: '1.5',
         padding: '40px 0',
       },
       '.cm-cursor': {
@@ -25,6 +25,11 @@ export const getEditorTheme = (theme: 'light' | 'dark') => {
       },
       '.cm-line': {
         padding: '0 2px',
+        lineHeight: '1.5',
+      },
+      '.cm-activeLine': {
+        backgroundColor: 'rgb(var(--color),0.05)',
+        borderRadius: '3px',
       },
       // Formatos
       '.cm-md-bold': {
@@ -382,6 +387,46 @@ export const getEditorTheme = (theme: 'light' | 'dark') => {
         backgroundColor: 'rgba(168, 85, 247, 0.1)',
       },
 
+      // TABLAS
+      '.cm-md-table-widget': {
+        display: 'table',
+        width: '100%',
+        borderCollapse: 'collapse',
+        margin: '2px 0',
+        fontSize: '.875rem',
+        fontFamily: '"Inter", sans-serif',
+      },
+      '.cm-md-table-widget th': {
+        border: `1px solid ${isDark ? 'rgba(255,254,254,0.2)' : 'rgba(30,37,44,0.2)'}`,
+        padding: '8px 12px',
+        fontWeight: '600',
+        textAlign: 'left',
+        backgroundColor: isDark
+          ? 'rgba(255,254,254,0.06)'
+          : 'rgba(30,37,44,0.04)',
+        color: 'rgb(var(--color),0.85)',
+      },
+      '.cm-md-table-widget td': {
+        border: `1px solid ${isDark ? 'rgba(255,254,254,0.12)' : 'rgba(30,37,44,0.12)'}`,
+        padding: '6px 12px',
+        color: 'rgb(var(--color),0.75)',
+      },
+      '.cm-md-table-widget tbody tr:nth-child(even)': {
+        backgroundColor: isDark
+          ? 'rgba(255,254,254,0.03)'
+          : 'rgba(30,37,44,0.02)',
+      },
+      '.cm-md-table-widget tbody tr:hover': {
+        backgroundColor: isDark
+          ? 'rgba(59,130,246,0.08)'
+          : 'rgba(59,130,246,0.04)',
+      },
+      '.cm-md-table-widget th:hover, .cm-md-table-widget td:hover': {
+        backgroundColor: isDark
+          ? 'rgba(59,130,246,0.12)'
+          : 'rgba(59,130,246,0.08)',
+        cursor: 'pointer',
+      },
       // Regla Horizontal (HR)
       '.cm-md-hr': {
         display: 'inline-block',
@@ -396,7 +441,7 @@ export const getEditorTheme = (theme: 'light' | 'dark') => {
       },
 
       '&.cm-focused .cm-selectionBackground, ::selection': {
-        backgroundColor: 'rgba(59, 130, 246, 0.2) !important',
+        backgroundColor: 'rgb(59, 130, 246, 0.25) !important',
       },
     },
     { dark: isDark },

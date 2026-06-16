@@ -22,6 +22,13 @@
   --fn-def-bg: rgba(59, 130, 246, 0.05);
   --fn-def-border: rgba(59, 130, 246, 0.3);
 
+  /* Statusbar colors */
+  --statusbar-bg: var(--light);
+  --statusbar-text: rgb(var(--color), 0.55);
+  --statusbar-border: rgb(var(--color), 0.08);
+  --statusbar-height: 28px;
+  --statusbar-font-size: 0.7rem;
+
   /* Background | Theme */
   --hdr-gradient: linear-gradient(
     to top in oklch,
@@ -36,6 +43,8 @@
   /* Colors | Base */
   --color-text: #fffefe;
   --color: 255, 254, 254;
+  /* Statusbar */
+  --statusbar-bg: var(--dark);
   /* Background | Theme */
   --hdr-gradient: linear-gradient(
     to bottom right in oklch,

@@ -1,6 +1,7 @@
 # Astro Starter Kit: Minimal
 
 opencode -s ses_1386d85b7ffeYi4ae168igTOUL
+opencode -s ses_133460776ffeLnt5V9zSJNQZCM
 
 ```sh
 pnpm create astro@latest -- --template minimal

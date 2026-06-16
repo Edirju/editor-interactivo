@@ -189,18 +189,32 @@ export const insertarItems: ToolbarItem[] = [
   },
 ];
 
+// TABLA - Edición (visible solo dentro de una tabla)
+export const tablaEditItems: ToolbarItem[] = [
+  { id: 'addRowAbove', labelKey: 'toolbarTable.addRowAbove', icon: 'ri-insert-row-top', command: EditorCommands.addRowAbove },
+  { id: 'addRowBelow', labelKey: 'toolbarTable.addRowBelow', icon: 'ri-insert-row-bottom', command: EditorCommands.addRowBelow },
+  { id: 'deleteRow', labelKey: 'toolbarTable.deleteRow', icon: 'ri-delete-row', divider: true, command: EditorCommands.deleteRow },
+  { id: 'addColumnLeft', labelKey: 'toolbarTable.addColumnLeft', icon: 'ri-insert-column-left', command: EditorCommands.addColumnLeft },
+  { id: 'addColumnRight', labelKey: 'toolbarTable.addColumnRight', icon: 'ri-insert-column-right', command: EditorCommands.addColumnRight },
+  { id: 'deleteColumn', labelKey: 'toolbarTable.deleteColumn', icon: 'ri-delete-column', divider: true, command: EditorCommands.deleteColumn },
+  { id: 'alignLeft', labelKey: 'toolbarTable.alignLeft', icon: 'ri-align-left', command: EditorCommands.alignColumnLeft },
+  { id: 'alignCenter', labelKey: 'toolbarTable.alignCenter', icon: 'ri-align-center', command: EditorCommands.alignColumnCenter },
+  { id: 'alignRight', labelKey: 'toolbarTable.alignRight', icon: 'ri-align-right', divider: true, command: EditorCommands.alignColumnRight },
+  { id: 'deleteTable', labelKey: 'toolbarTable.deleteTable', icon: 'ri-delete-bin-line', command: EditorCommands.deleteTable },
+];
+
 // ARCHIVO
 export const archivoItems: ToolbarItem[] = [
-  { id: 'new', labelKey: 'common.new', icon: 'ri-file-add-line' },
-  { id: 'save', labelKey: 'common.save', icon: 'ri-save-line' },
-  { id: 'open', labelKey: 'common.open', icon: 'ri-folder-open-line' },
+  { id: 'new', labelKey: 'common.new', icon: 'ri-file-add-line', command: EditorCommands.newDocument },
+  { id: 'save', labelKey: 'common.save', icon: 'ri-save-line', command: EditorCommands.saveDocument },
+  { id: 'open', labelKey: 'common.open', icon: 'ri-folder-open-line', command: EditorCommands.openDocument },
 ];
 
 // ICONOS DE ESCRITORIO (Copy, Cut, Paste)
 export const desktopIconButtons: DesktopIconButton[] = [
-  { id: 'copy', icon: 'ri-file-copy-line', labelKey: 'common.copy' },
-  { id: 'cut', icon: 'ri-scissors-line', labelKey: 'common.cut' },
-  { id: 'paste', icon: 'ri-clipboard-line', labelKey: 'common.paste' },
+  { id: 'copy', icon: 'ri-file-copy-line', labelKey: 'common.copy', command: EditorCommands.copyContent },
+  { id: 'cut', icon: 'ri-scissors-line', labelKey: 'common.cut', command: EditorCommands.cutContent },
+  { id: 'paste', icon: 'ri-clipboard-line', labelKey: 'common.paste', command: EditorCommands.pasteContent },
 ];
 
 // SECCIONES DEL DRAWER MOVIL
@@ -228,5 +242,11 @@ export const mobileSections: ToolbarSection[] = [
     titleKey: 'toolbar.insert',
     icon: 'ri-add-box-line',
     items: insertarItems,
+  },
+  {
+    id: 'tableEdit',
+    titleKey: 'toolbar.table',
+    icon: 'ri-table-2',
+    items: tablaEditItems,
   },
 ];

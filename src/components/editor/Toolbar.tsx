@@ -4,7 +4,8 @@ import { MenuDropdown } from '../ui/MenuDropdown';
 import { MobileDrawer } from '../ui/MobileDrawer';
 import { FootnoteModal } from './FootnoteModal';
 import { CodeBlockModal } from './CodeBlockModal';
-import { $editorView } from '../../store/editorStore';
+import { TableModal } from './TableModal';
+import { $editorView, $isInTable } from '../../store/editorStore';
 import { $theme, toggleTheme } from '../../store/themeStore';
 import { useTranslation, setLocale } from '../../i18n';
 import {
@@ -14,6 +15,7 @@ import {
   archivoItems as archivoConfig,
   desktopIconButtons,
   mobileSections as mobileConfig,
+  tablaEditItems as tablaEditConfig,
 } from './toolbar-config';
 import type { ToolbarItem } from './toolbar-config';
 
@@ -45,6 +47,7 @@ function mapItems(
   t: (key: string, params?: Record<string, string | number>) => string,
   onFootnoteClick?: () => void,
   onCodeBlockClick?: () => void,
+  onTableClick?: () => void,
 ) {
   return items.map((item) => {
     if (item.id === 'footnote' && onFootnoteClick) {
@@ -65,6 +68,15 @@ function mapItems(
         onClick: onCodeBlockClick,
       };
     }
+    if (item.id === 'table' && onTableClick) {
+      return {
+        label: t(item.labelKey, item.labelParams),
+        icon: item.icon,
+        shortcut: item.shortcut,
+        divider: item.divider,
+        onClick: onTableClick,
+      };
+    }
     return {
       label: t(item.labelKey, item.labelParams),
       icon: item.icon,
@@ -79,24 +91,30 @@ export const Toolbar = () => {
   const view = useStore($editorView);
   const theme = useStore($theme);
   const { t, locale } = useTranslation();
+  const isInTable = useStore($isInTable);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isFootnoteOpen, setIsFootnoteOpen] = useState(false);
   const [isCodeBlockOpen, setIsCodeBlockOpen] = useState(false);
+  const [isTableOpen, setIsTableOpen] = useState(false);
 
   const openFootnoteModal = () => setIsFootnoteOpen(true);
   const openCodeBlockModal = () => setIsCodeBlockOpen(true);
+  const openTableModal = () => setIsTableOpen(true);
 
   const formatoItems = mapItems(formatoConfig, view, t);
   const parrafoItems = mapItems(parrafoConfig, view, t);
-  const insertarItems = mapItems(insertarConfig, view, t, openFootnoteModal, openCodeBlockModal);
+  const insertarItems = mapItems(insertarConfig, view, t, openFootnoteModal, openCodeBlockModal, openTableModal);
   const archivoItems = mapItems(archivoConfig, view, t);
+  const tablaEditMapped = isInTable ? mapItems(tablaEditConfig, view, t) : [];
 
-  const mobileSections = mobileConfig.map((section) => ({
-    title: t(section.titleKey),
-    icon: section.icon,
-    items: mapItems(section.items, view, t),
-  }));
+  const mobileSections = mobileConfig
+    .filter((section) => section.id !== 'tableEdit' || isInTable)
+    .map((section) => ({
+      title: t(section.titleKey),
+      icon: section.icon,
+      items: mapItems(section.items, view, t),
+    }));
 
   return (
     <header className="toolbar sticky top-0 z-40 w-full backdrop-blur-md border-b border-[rgb(var(--color),0.1)] text-[rgb(var(--color),0.65)]">
@@ -111,7 +129,7 @@ export const Toolbar = () => {
         <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
           <div className="flex items-center">
             {archivoItems.map((item, i) => (
-              <IconButton key={i} icon={item.icon} title={item.label} />
+              <IconButton key={i} icon={item.icon} title={item.label} onClick={item.onClick} />
             ))}
           </div>
           <ToolbarSeparator />
@@ -121,6 +139,7 @@ export const Toolbar = () => {
                 key={btn.id}
                 icon={btn.icon}
                 title={t(btn.labelKey)}
+                onClick={() => btn.command?.(view!)}
               />
             ))}
           </div>
@@ -140,6 +159,13 @@ export const Toolbar = () => {
             icon="ri-add-box-line"
             items={insertarItems}
           />
+          {isInTable && view && (
+            <MenuDropdown
+              label={t('toolbar.table')}
+              icon="ri-table-2"
+              items={tablaEditMapped}
+            />
+          )}
         </div>
 
         <div className="flex items-center gap-1">
@@ -152,7 +178,7 @@ export const Toolbar = () => {
           <button
             onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
             title={locale === 'es' ? 'English' : 'Español'}
-            className="p-2 size-8 flex items-center justify-center rounded-md hover:bg-[rgb(var(--color),0.15)] text-[rgb(var(--color),0.65)] hover:text-[rgb(var(--color),0.85)] transition-all duration-300 active:scale-90 shrink-0 font-semibold text-xs"
+            className="p-2 size-8 flex items-center justify-center rounded-md hover:bg-[rgb(var(--color),0.15)] text-[rgb(var(--color),0.65)] hover:text-[rgb(var(--color),0.85)] transition-all duration-300 active:scale-90 shrink-0 font-medium text-[10px] border border-[rgb(var(--color),0.08)]"
           >
             {locale === 'es' ? 'EN' : 'ES'}
           </button>
@@ -181,6 +207,11 @@ export const Toolbar = () => {
       <CodeBlockModal
         isOpen={isCodeBlockOpen}
         onClose={() => setIsCodeBlockOpen(false)}
+        view={view}
+      />
+      <TableModal
+        isOpen={isTableOpen}
+        onClose={() => setIsTableOpen(false)}
         view={view}
       />
     </header>
